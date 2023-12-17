@@ -8,6 +8,7 @@ service UserService {
     rpc FindOnelUser (FindOnelUserDto) returns (User){}
     rpc UpdateOneUser (UpdateOneUserDto) returns (User){}
     rpc RemoveUser (FindOnelUserDto) returns (User){}
+    rpc QueryUsers (stream PaginationDto) returns (stream Users){}
 }
 
 message Empty {}
@@ -15,11 +16,16 @@ message Empty {}
 
 
 message Users {
- repeated User Users = 1;
+ repeated User users = 1;
 }
 
 message FindOnelUserDto {
     string id = 1;
+}
+
+message PaginationDto {
+    int32 page = 1;
+    int32 skip = 2;
 }
 
 message UpdateOneUserDto {
