@@ -32,7 +32,7 @@ export class UsersService implements OnModuleInit {
   }
 
   findAll(): Users {
-    return { Users: this.users };
+    return { users: this.users };
   }
 
   findOne(id: string): User {
@@ -68,7 +68,7 @@ export class UsersService implements OnModuleInit {
     const onNext = (paginationDto: PaginationDto) => {
       const start = paginationDto.page * paginationDto.skip;
       subject.next({
-        Users: this.users.slice(start, start + paginationDto.skip),
+        users: this.users.slice(start, start + paginationDto.skip),
       });
     };
     const onComplete = () => subject.complete();
